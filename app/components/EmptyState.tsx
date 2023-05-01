@@ -4,13 +4,13 @@ import { useRouter } from "next/navigation";
 import Heading from "./Heading";
 import Button from "./Button";
 
-interface EmptyStateProps {
+interface EmptyState {
   title?: string;
   subtitle?: string;
   showReset?: boolean;
 }
 
-const EmptyState: React.FC<EmptyStateProps> = ({
+const EmptyState: React.FC<EmptyState> = ({
   title = "No exact matches found",
   subtitle = "Try adjusting or removing some of your filters",
   showReset,
@@ -22,12 +22,17 @@ const EmptyState: React.FC<EmptyStateProps> = ({
       className="
         h-[60vh]
         flex 
-        flex-col 
-        items-center 
+        flex-col
+        gap-2
         justify-center
+        items-center 
         "
     >
-      <Heading center title={title} subtitle={subtitle} />
+      <Heading 
+        center 
+        title={title} 
+        subtitle={subtitle} 
+      />
       <div className="w-48 mt-4">
         {showReset && (
           <Button
