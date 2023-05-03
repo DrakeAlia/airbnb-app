@@ -6,9 +6,8 @@ import { toast } from "react-hot-toast";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Reservation } from "@prisma/client";
 
-import { SafeListing, SafeUser } from "@component/app/types";
+import { SafeListing, SafeReservation, SafeUser } from "@component/app/types";
 import { categories } from "@component/app/components/navbar/Categories";
 import Container from "@component/app/components/Container";
 import ListingHead from "@component/app/components/listings/ListingHead";
@@ -24,7 +23,7 @@ const initialDateRange = {
 };
 
 interface ListingClientProps {
-  reservations?: Reservation[];
+  reservations?: SafeReservation[];
   listing: SafeListing & {
     user: SafeUser;
   };
@@ -73,7 +72,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
         listingId: listing?.id,
       })
       .then(() => {
-        toast.success("Listing created successfully!");
+        toast.success("Listing reserved!");
         setDateRange(initialDateRange);
         // Redirect to /trips
         router.refresh();
