@@ -11,6 +11,8 @@ import SearchModal from "./components/modals/SearchModal";
 import ToasterProvider from "./providers/ToasterProvider";
 import getCurrentUser from "./actions/getCurrentUser";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Airbnb Clone",
   description: "Airbnb Clone built with Next.js",
